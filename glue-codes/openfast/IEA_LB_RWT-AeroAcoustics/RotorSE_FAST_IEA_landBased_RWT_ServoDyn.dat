@@ -90,6 +90,11 @@ False                  DLL_Ramp    - Whether a linear ramp should be used betwee
 0                      DLL_NumTrq  - Record 26: No. of points in torque-speed look-up table {0 = none and use the optimal mode parameters; nonzero = ignore the optimal mode PARAMETERs by setting Record 16 to 0.0} (-) [used only with Bladed Interface]
 GenSpd_TLU            	GenTrq_TLU            
 (rpm)                 	(Nm)                  
+---------------------- AIRFOIL CONTROL (AD15) ----------------------------------
+          0   AfCmode       - Airfoil control mode {0: none (mean held), 1: sine wave cycle, 4: user-defined from Simulink/Labview, 5: user-defined from Bladed-style DLL} (switch)
+          0   AfC_mean      - Mean level for sinusoidal cycling or steady value (-) [used only with AfCmode=={1,2}]
+          0   AfC_amplitude - Amplitude for for cosine cycling of flap signal (AfC = AfC_amplitude*cos(Azimuth+phase)+AfC_mean) (-) [used only with AfCmode==2]
+          0   AfC_phase     - Phase relative to the blade azimuth (0 is vertical) for for cosine cycling of flap signal (deg) [used only with AfCmode==2]
 ---------------------- OUTPUT --------------------------------------------------
 True                   SumPrint    - Print summary data to <RootName>.sum (flag) (currently unused)
 1                      OutFile     - Switch to determine where output will be placed: {1: in module output file only; 2: in glue code output file only; 3: both} (currently unused)
